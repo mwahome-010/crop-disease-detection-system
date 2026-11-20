@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Forum Post</title>
+</head>
+
+<body>
+
+    <h1>Create a Forum Post</h1>
+
+    <p>
+        Ask a crop-related question or share a case that the
+        detection system could not resolve.
+    </p>
+
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+
+        <p>
+            {{ form.title.label_tag }}
+            {{ form.title }}
+            {{ form.title.errors }}
+        </p>
+
+        <p>
+            {{ form.content.label_tag }}
+            {{ form.content }}
+            {{ form.content.errors }}
+        </p>
+
+        <p>
+            {{ form.image.label_tag }}
+            {{ form.image }}
+            {{ form.image.errors }}
+        </p>
+
+        <p>
+            {{ form.flair.label_tag }}
+            {{ form.flair }}
+            {{ form.flair.errors }}
+        </p>
+
+        <p>
+            {{ form.new_flair.label_tag }}
+            {{ form.new_flair }}
+            {{ form.new_flair.help_text }}
+            {{ form.new_flair.errors }}
+        </p>
+
+        {{ form.non_field_errors }}
+        <button type="submit">Publish Post</button>
+    </form>
+
+    <p>
+        <a href="{% url 'forum' %}">Cancel and Return to Forum</a>
+    </p>
+
+</body>
+
+</html>

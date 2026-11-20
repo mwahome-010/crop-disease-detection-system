@@ -1,0 +1,52 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Upload Crop Image</title>
+</head>
+<body>
+
+    <h1>Upload Crop Image</h1>
+
+    {% if guest_limit_reached %}
+
+        <h2>Guest Diagnosis Limit Reached</h2>
+
+        <p>
+            You have used all three guest diagnoses
+            available in this browser session.
+        </p>
+
+        <p>Please log in or register as a farmer to continue.</p>
+
+        <a href="{% url 'login' %}">Login</a>
+        |
+        <a href="{% url 'register' %}">Register</a>
+
+    {% else %}
+
+        {% if not request.user.is_authenticated %}
+            <p>
+                Guest diagnoses used:
+                {{ guest_diagnoses_used|default:0 }} / 3
+            </p>
+        {% endif %}
+
+        <p>
+            Select a crop leaf or supported fruit image for diagnosis.
+        </p>
+
+        <form method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Upload Image</button>
+        </form>
+
+    {% endif %}
+
+    <hr>
+
+    <a href="/">Return to Homepage</a>
+
+</body>
+</html>

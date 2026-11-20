@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Farmer Dashboard</title>
+</head>
+
+<body>
+
+    <h1>Farmer Dashboard</h1>
+
+    <p>Welcome, {{ request.user.username }}.</p>
+    <p>Your role is: {{ request.user.get_role_display }}</p>
+
+    <h2>Crop Disease Detection System</h2>
+
+    <a href="{% url 'diagnosis_history' %}">
+        View My Diagnosis History
+    </a>
+
+    <a href="{% url 'upload_image' %}">
+    Upload Crop Image
+    </a>
+
+    <p>You can upload crop images for disease diagnosis.</p>
+    <p>You can view your diagnosis history.</p>
+    <p>You can participate in the community forum.</p>
+
+    <form method="POST" action="{% url 'logout' %}">
+        {% csrf_token %}
+        <button type="submit">Logout</button>
+    </form>
+
+</body>
+
+</html>

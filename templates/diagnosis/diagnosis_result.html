@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diagnosis Result</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f7f4;
+            margin: 0;
+            padding: 25px;
+        }
+
+        .container {
+            max-width: 700px;
+            margin: auto;
+            background: white;
+            padding: 25px;
+            border-radius: 10px;
+        }
+
+        h1, h2 {
+            color: #245c35;
+        }
+
+        .warning {
+            background: #fff3cd;
+            border: 1px solid #ffe69c;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 5px;
+        }
+
+        .result-section {
+            margin: 20px 0;
+            padding: 15px;
+            background: #f4f7f4;
+            border-radius: 5px;
+        }
+
+        .recommendation {
+            background: #e8f5e9;
+            padding: 18px;
+            border-radius: 5px;
+            line-height: 1.6;
+        }
+
+        a {
+            display: inline-block;
+            margin: 10px 10px 0 0;
+            padding: 10px 15px;
+            background: #245c35;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+
+<body>
+<div class="container">
+
+    <h1>Crop Diagnosis Result</h1>
+
+    <div class="warning">
+        <strong>DEMONSTRATION RESULT — NOT A REAL DIAGNOSIS</strong>
+        <p>
+            This prototype currently uses simulated prediction data.
+            Do not use this result to make crop treatment decisions.
+        </p>
+    </div>
+
+    <div class="result-section">
+        <h2>Uploaded Image</h2>
+        <p>{{ image_name }}</p>
+    </div>
+
+    <div class="result-section">
+        <h2>Detection Details</h2>
+
+        <p><strong>Crop:</strong> {{ prediction.crop }}</p>
+        <p><strong>Plant Part:</strong> {{ prediction.plant_part }}</p>
+        <p><strong>Detected Disease:</strong> {{ prediction.disease }}</p>
+        <p><strong>Result Status:</strong> {{ prediction.status }}</p>
+    </div>
+
+    <div class="recommendation">
+        <h2>Recommended Course of Action</h2>
+        <p>{{ prediction.recommendation }}</p>
+    </div>
+
+    <div>
+        <a href="{% url 'upload_image' %}">Upload Another Image</a>
+
+        {% if user.is_authenticated %}
+            <a href="{% url 'diagnosis_history' %}">My Diagnosis History</a>
+            <a href="{% url 'dashboard' %}">Dashboard</a>
+        {% else %}
+            <a href="{% url 'login' %}">Login</a>
+            <a href="{% url 'register' %}">Register</a>
+        {% endif %}
+    </div>
+
+</div>
+</body>
+</html>

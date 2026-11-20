@@ -1,0 +1,16 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Upload Successful</title>
+  </head>
+  <body>
+    <h1>Image Uploaded Successfully</h1>
+
+    <p>Selected image: {{ image_name }}</p>
+
+    <p>{{ processing_message }}</p>
+    <p>Disease detection will be implemented in the next stages.</p>
+
+    <a href="{% url 'upload_image' %}">Upload Another Image</a>
+  </body>
+</html>

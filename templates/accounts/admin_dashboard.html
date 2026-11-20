@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Administrator Dashboard</title>
+</head>
+<body>
+
+    <h1>Administrator Dashboard</h1>
+
+    <p>Welcome, {{ request.user.username }}.</p>
+    <p>Your role is: {{ request.user.get_role_display }}</p>
+
+    <h2>System Management</h2>
+
+    <ul>
+        <li>Manage user accounts</li>
+        <li>Manage crops and diseases</li>
+        <li>Manage disease recommendations</li>
+        <li>Moderate the community forum</li>
+        <li>View system reports and statistics</li>
+    </ul>
+
+    <form method="POST" action="{% url 'logout' %}">
+        {% csrf_token %}
+        <button type="submit">Logout</button>
+    </form>
+
+</body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>My Diagnosis History</title>
+</head>
+<body>
+
+    <h1>My Diagnosis History</h1>
+
+    {% if diagnoses %}
+        <table border="1" cellpadding="10">
+            <thead>
+                <tr>
+                    <th>Date</th>
+                    <th>Crop</th>
+                    <th>Plant Part</th>
+                    <th>Disease</th>
+                    <th>Status</th>
+                    <th>Image</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                {% for diagnosis in diagnoses %}
+                    <tr>
+                        <td>{{ diagnosis.created_at }}</td>
+                        <td>{{ diagnosis.crop|default:"Unknown" }}</td>
+                        <td>{{ diagnosis.plant_part|default:"Unknown" }}</td>
+                        <td>{{ diagnosis.disease|default:"Unknown" }}</td>
+                        <td>{{ diagnosis.get_status_display }}</td>
+                        <td>
+                            {% if diagnosis.image %}
+                                <a href="{{ diagnosis.image.url }}" target="_blank">
+                                    View Image
+                                </a>
+                            {% endif %}
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <p>You have not made any diagnoses yet.</p>
+    {% endif %}
+
+    <p>
+        <a href="{% url 'upload_image' %}">Upload Another Image</a>
+    </p>
+
+    <p>
+        <a href="{% url 'dashboard' %}">Back to Dashboard</a>
+    </p>
+
+</body>
+</html>

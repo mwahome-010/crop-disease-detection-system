@@ -1,0 +1,82 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Farmer Forum</title>
+</head>
+<body>
+
+    <h1>Farmer Community Forum</h1>
+
+    <p>
+        Share crop problems, ask questions and learn from other farmers.
+    </p>
+
+    <p>
+        <strong>Notice:</strong>
+        Advice shared by community members is not verified agricultural
+        or professional advice.
+    </p>
+
+    {% if user.is_authenticated %}
+        <p>Welcome, {{ user.username }}.</p>
+        <a href="{% url 'create_post' %}">Create a Post</a>
+    {% else %}
+        <p>You are viewing the forum as a guest.</p>
+        <a href="{% url 'login' %}">Login</a>
+        |
+        <a href="{% url 'register' %}">Register</a>
+    {% endif %}
+
+    <hr>
+
+    <h2>Recent Discussions</h2>
+
+    {% for post in posts %}
+        <article>
+            <h3>
+                <a href="{% url 'post_detail' post.id %}">
+                    {{ post.title }}
+                </a>
+            </h3>
+
+            <p>
+                Posted by {{ post.author.username }}
+                on {{ post.created_at|date:"d M Y, H:i" }}
+            </p>
+
+            {% if post.flair %}
+                <p>Category: {{ post.flair.name }}</p>
+            {% endif %}
+
+            <p>{{ post.content|truncatewords:30 }}</p>
+
+            {% if post.image %}
+                <img
+                    src="{{ post.image.url }}"
+                    alt="Image attached to forum post"
+                    width="200"
+                >
+            {% endif %}
+
+            <p>
+                <a href="{% url 'post_detail' post.id %}">
+                    View Discussion
+                </a>
+            </p>
+        </article>
+
+        <hr>
+
+    {% empty %}
+        <p>No discussions have been posted yet.</p>
+    {% endfor %}
+
+    <p>
+        <a href="/">Return to Home Page</a>
+    </p>
+
+</body>
+</html>
