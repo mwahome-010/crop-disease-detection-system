@@ -14,8 +14,6 @@ from django.core.files.base import ContentFile
 from .models import Crop, PlantPart, Disease, Diagnosis, CropPartDisease
 from django.contrib.auth.decorators import login_required
 
-from .models import Crop, PlantPart, Disease, Diagnosis, CropPartDisease
-
 def upload_image(request):
 
     if (

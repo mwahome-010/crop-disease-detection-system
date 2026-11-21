@@ -10,11 +10,12 @@ class ImageUploadForm(forms.Form):
     def clean_image(self):
         image = self.cleaned_data.get('image')
 
-        max_size = 5 * 1024 * 1024  # 5 MB
+    # 10MB due to smartphones' high res images
+        max_size = 10 * 1024 * 1024
 
         if image.size > max_size:
             raise forms.ValidationError(
-                "Image size must not exceed 5 MB."
+                "Image size must not exceed 10 MB."
             )
 
         return image

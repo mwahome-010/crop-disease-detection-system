@@ -26,9 +26,9 @@ class ForumPostForm(forms.ModelForm):
     def clean_image(self):
         image = self.cleaned_data.get('image')
 
-        if image and image.size > 5 * 1024 * 1024:
+        if image and image.size > 10 * 1024 * 1024:
             raise forms.ValidationError(
-                'The image must not exceed 5 MB.'
+                'The image must not exceed 10 MB.'
             )
 
         return image

@@ -24,7 +24,7 @@ if not SECRET_KEY:
     raise ValueError("DJANGO_SECRET_KEY is not set.")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = os.getenv('DEBUG_STATUS')
 
 ALLOWED_HOSTS = []
 
