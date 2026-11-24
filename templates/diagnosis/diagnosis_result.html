@@ -1,65 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Diagnosis Result</title>
-
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background: #f4f7f4;
-            margin: 0;
-            padding: 25px;
-        }
-
-        .container {
-            max-width: 700px;
-            margin: auto;
-            background: white;
-            padding: 25px;
-            border-radius: 10px;
-        }
-
-        h1, h2 {
-            color: #245c35;
-        }
-
-        .warning {
-            background: #fff3cd;
-            border: 1px solid #ffe69c;
-            padding: 15px;
-            margin: 20px 0;
-            border-radius: 5px;
-        }
-
-        .result-section {
-            margin: 20px 0;
-            padding: 15px;
-            background: #f4f7f4;
-            border-radius: 5px;
-        }
-
-        .recommendation {
-            background: #e8f5e9;
-            padding: 18px;
-            border-radius: 5px;
-            line-height: 1.6;
-        }
-
-        a {
-            display: inline-block;
-            margin: 10px 10px 0 0;
-            padding: 10px 15px;
-            background: #245c35;
-            color: white;
-            text-decoration: none;
-            border-radius: 5px;
-        }
-    </style>
-</head>
-
-<body>
+{% extends 'base.html' %}
+{% block title %}Diagnosis Result{% endblock %}
+{% block content %}
 <div class="container">
 
     <h1>Crop Diagnosis Result</h1>
@@ -104,5 +45,4 @@
     </div>
 
 </div>
-</body>
-</html>
+{% endblock %}

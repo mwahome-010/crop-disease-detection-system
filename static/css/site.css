@@ -1,0 +1,44 @@
+:root {
+  --green-900: #0F3D22;
+  --green-700: #1E5C34;
+  --gold-500: #D4A72C;
+  --gold-300: #E8C55B;
+  --black: #111111;      
+  --white: #FFFFFF;  
+  --paper: #F4F6F3;
+}
+
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0;font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;color:var(--black);background:var(--paper);line-height:1.55}
+.container{width:min(100% - 2rem,62rem);margin-inline:auto}
+a{color:var(--green-700)}
+:focus-visible{outline:3px solid var(--gold-500);outline-offset:2px}
+
+.site-header{background:var(--green-900);border-bottom:4px solid var(--gold-500)}
+.bar{display:flex;flex-wrap:wrap;gap:.75rem 1.5rem;align-items:center;justify-content:space-between;padding:.75rem 0}
+.brand{color:var(--white);font-weight:700;font-size:1.15rem;text-decoration:none}
+.nav{display:flex;flex-wrap:wrap;gap:.5rem 1.25rem;align-items:center}
+.nav a:not(.btn),.link-btn{color:var(--white);text-decoration:none}
+.nav a:not(.btn):hover,.link-btn:hover{color:var(--gold-300)}
+.inline{display:inline;margin:0}
+.link-btn{background:none;border:0;font:inherit;cursor:pointer;padding:0}
+
+.btn{display:inline-block;border:0;border-radius:.5rem;padding:.7rem 1.2rem;font:inherit;font-weight:600;cursor:pointer;text-decoration:none}
+.btn-gold{background:var(--gold-500);color:var(--black)}
+.btn-gold:hover{background:var(--gold-300)}
+.btn-green{background:var(--green-700);color:var(--white)}
+.btn-green:hover{background:var(--green-900)}
+
+.card{background:var(--white);border-radius:.75rem;padding:1.5rem;box-shadow:0 1px 4px rgba(0,0,0,.12)}
+.narrow{max-width:30rem;margin:2rem auto}
+input[type=text],input[type=email],input[type=password],textarea,select{width:100%;padding:.6rem;border:1px solid #888;border-radius:.4rem;font:inherit}
+.messages{list-style:none;padding:0;margin:1rem 0}
+.messages li{background:var(--white);border-left:6px solid var(--gold-500);padding:.6rem 1rem;margin-bottom:.5rem}
+.site-footer{background:var(--black);color:var(--white);margin-top:3rem;padding:1.25rem 0;font-size:.9rem}
+
+.hero{background:linear-gradient(135deg,var(--green-900),var(--green-700));color:var(--white);border-radius:.75rem;padding:2rem 1.5rem;margin-top:1.5rem}
+.hero h1{margin-top:0}
+.upload{display:flex;flex-wrap:wrap;gap:.75rem;align-items:center;margin-top:1rem}
+.upload input[type=file]{background:var(--white);color:var(--black);padding:.6rem;border-radius:.4rem;max-width:100%}
+.note{color:var(--gold-300);font-size:.9rem}
+.steps{display:grid;gap:1rem;grid-template-columns:repeat(auto-fit,minmax(14rem,1fr));margin-top:1.5rem}

@@ -1,0 +1,42 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block title %}CropDoc{% endblock %}</title>
+  <link rel="stylesheet" href="{% static 'css/site.css' %}">
+</head>
+<body>
+<header class="site-header">
+  <div class="container bar">
+    <a class="brand" href="{% url 'home' %}">Crop Disease Detection</a>
+    <nav class="nav">
+      <a href="{% url 'home' %}">Detect</a>
+      <a href="{% url 'forum' %}">Forum</a>
+      {% if user.is_authenticated %}
+        <a href="{% url 'dashboard' %}">Dashboard</a>
+        <form method="post" action="{% url 'logout' %}" class="inline">
+          {% csrf_token %}
+          <button class="link-btn" type="submit" style="background: #E8C55B; padding: 6px; border-radius: 8px;">Log out</button>
+        </form>
+      {% else %}
+        <a href="{% url 'login' %}">Log in</a>
+        <a class="btn btn-gold" href="{% url 'register' %}">Register</a>
+      {% endif %}
+    </nav>
+  </div>
+</header>
+
+<main class="container">
+  {% if messages %}
+    <ul class="messages">{% for m in messages %}<li>{{ m }}</li>{% endfor %}</ul>
+  {% endif %}
+  {% block content %}{% endblock %}
+</main>
+
+<footer class="site-footer">
+  <div class="container">Decision support only. This system does not replace advice from an agricultural expert.</div>
+</footer>
+</body>
+</html>

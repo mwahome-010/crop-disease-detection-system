@@ -3,20 +3,12 @@ from django.db import models
 # Create your models here.
 
 from django.conf import settings
-from django.db.models.functions import Lower
-
 
 class Flair(models.Model):
-    name = models.CharField(max_length=30)
+    name = models.CharField(max_length=30, unique=True)
 
     class Meta:
         ordering = ['name']
-        constraints = [
-            models.UniqueConstraint(
-                Lower('name'),
-                name='unique_flair_name_case_insensitive'
-            )
-        ]
 
     def __str__(self):
         return self.name

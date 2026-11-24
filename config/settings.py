@@ -24,10 +24,10 @@ if not SECRET_KEY:
     raise ValueError("DJANGO_SECRET_KEY is not set.")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = os.getenv('DEBUG_STATUS')
 
-ALLOWED_HOSTS = []
+DEBUG = os.getenv('DEBUG_STATUS', 'False').strip().lower() in ('1', 'true', 'yes')
 
+ALLOWED_HOSTS = [h for h in os.getenv('ALLOWED_HOSTS', '').split(',') if h]
 
 # Application definition
 
@@ -80,8 +80,13 @@ WSGI_APPLICATION = 'config.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': os.getenv('DB_NAME'),
+        'USER': os.getenv('DB_USER'),
+        'PASSWORD': os.getenv('DB_PASSWORD'),
+        'HOST': os.getenv('DB_HOST'),
+        'PORT': os.getenv('DB_PORT'),
+        'OPTIONS': {'charset': 'utf8mb4'},
     }
 }
 
@@ -143,3 +148,5 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
 
 load_dotenv(BASE_DIR / '.env')
+
+STATICFILES_DIRS = [BASE_DIR / 'static']

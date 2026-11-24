@@ -95,14 +95,14 @@ def upload_image(request):
                     }
                 )
 
-            except (
-                ValidationError,
-                Crop.DoesNotExist,
-                PlantPart.DoesNotExist,
-                Disease.DoesNotExist,
-                CropPartDisease.DoesNotExist
-            ) as error:
-                form.add_error('image', str(error))
+            except (Crop.DoesNotExist, PlantPart.DoesNotExist,
+                    Disease.DoesNotExist, CropPartDisease.DoesNotExist
+            ):
+                form.add_error(None, "The knowledge base has no entry for this result yet. "
+                         "Please alert the site owner."
+                )
+            except ValidationError as error:
+                form.add_error('image', error)
 
     else:
         form = ImageUploadForm()

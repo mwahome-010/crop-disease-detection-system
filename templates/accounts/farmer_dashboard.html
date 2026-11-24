@@ -1,36 +1,26 @@
-<!DOCTYPE html>
-<html>
+{% extends 'base.html' %}
+{% block title %}Farmer Dashboard{% endblock %}
 
-<head>
-    <title>Farmer Dashboard</title>
-</head>
-
-<body>
-
+{% block content %}
     <h1>Farmer Dashboard</h1>
 
     <p>Welcome, {{ request.user.username }}.</p>
-    <p>Your role is: {{ request.user.get_role_display }}</p>
 
     <h2>Crop Disease Detection System</h2>
 
-    <a href="{% url 'diagnosis_history' %}">
-        View My Diagnosis History
+    <a href="{% url 'diagnosis_history' %}" style="display: block; margin-bottom: 10px;">
+        My Diagnosis History
     </a>
 
-    <a href="{% url 'upload_image' %}">
-    Upload Crop Image
+    <a href="{% url 'upload_image' %}" style="display: block; margin-bottom: 10px;">
+        Upload Crop Image
     </a>
 
-    <p>You can upload crop images for disease diagnosis.</p>
-    <p>You can view your diagnosis history.</p>
-    <p>You can participate in the community forum.</p>
+    <p>You can upload crop images for disease diagnosis, view your diagnosis history and participate in the <a href="{% url 'forum' %}">community forum</a>.</p>
 
     <form method="POST" action="{% url 'logout' %}">
         {% csrf_token %}
-        <button type="submit">Logout</button>
+        <button type="submit" style="display: block; margin-bottom: 10px; ">Logout</button>
+        
     </form>
-
-</body>
-
-</html>
+{% endblock %}

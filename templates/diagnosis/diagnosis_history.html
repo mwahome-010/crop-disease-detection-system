@@ -1,9 +1,6 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>My Diagnosis History</title>
-</head>
-<body>
+{% extends 'base.html' %}
+{% block title %}Diagnosis History{% endblock %}
+{% block content %}
 
     <h1>My Diagnosis History</h1>
 
@@ -51,5 +48,4 @@
         <a href="{% url 'dashboard' %}">Back to Dashboard</a>
     </p>
 
-</body>
-</html>
+{% endblock %}

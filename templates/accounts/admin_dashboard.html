@@ -1,14 +1,10 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Administrator Dashboard</title>
-</head>
-<body>
+{% extends 'base.html' %}
+{% block title %}Admin Dashboard{% endblock %}
+{% block content %}
 
     <h1>Administrator Dashboard</h1>
 
     <p>Welcome, {{ request.user.username }}.</p>
-    <p>Your role is: {{ request.user.get_role_display }}</p>
 
     <h2>System Management</h2>
 
@@ -25,5 +21,4 @@
         <button type="submit">Logout</button>
     </form>
 
-</body>
-</html>
+{% endblock %}

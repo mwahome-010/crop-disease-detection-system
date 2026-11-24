@@ -1,13 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Create Forum Post</title>
-</head>
-
-<body>
+{% extends 'base.html' %}
+{% block title %}Create Post{% endblock %}
+{% block content %}
 
     <h1>Create a Forum Post</h1>
 
@@ -58,6 +51,4 @@
         <a href="{% url 'forum' %}">Cancel and Return to Forum</a>
     </p>
 
-</body>
-
-</html>
+{% endblock %}

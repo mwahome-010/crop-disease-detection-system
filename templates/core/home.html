@@ -1,65 +1,30 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Crop Disease Detection System</title>
-</head>
+{% extends 'base.html' %}
+{% block title %}Detect crop diseases{% endblock %}
+{% block content %}
+<section class="hero">
+  <h1>Is your crop sick?</h1>
+  <p>Take a clear photo of one leaf or fruit, upload it and get a diagnosis and what to do next.</p>
 
-<body>
-
-    <h1>Crop Disease Detection System</h1>
-
-    <p>
-        Welcome to the Crop Disease Detection System.
-        Upload a crop image to identify possible diseases
-        and receive recommendations.
-    </p>
-
-    <hr>
-
-    <h2>Start Disease Detection</h2>
-
-    <p>
-        You can use the diagnosis service as a guest
-        or create an account to access additional features.
-    </p>
-
-   {% if not request.user.is_authenticated %}
-    <p>
-        Guest diagnoses used in this session:
-        {{ guest_diagnoses_used }} / 3
-    </p>
+  {% if guest_limit_reached %}
+    <p>You have used your {{ guest_limit }} free diagnoses.</p>
+    <a class="btn btn-gold" href="{% url 'register' %}">Register to continue</a>
+    <a class="btn" style="color:#fff" href="{% url 'login' %}">Log in</a>
+  {% else %}
+    <form class="upload" method="post" action="{% url 'upload_image' %}" enctype="multipart/form-data">
+      {% csrf_token %}
+      {{ form.image }}
+      <button class="btn btn-gold" type="submit">Diagnose</button>
+    </form>
+    {% if not user.is_authenticated %}
+      <p class="note">Free diagnoses left: {{ guest_remaining }} of {{ guest_limit }}.
+        <a href="{% url 'register' %}" style="color:#E8C55B">Register</a> for unlimited use and to join the forum.</p>
     {% endif %}
+  {% endif %}
+</section>
 
-    <button disabled>Upload Image — Coming Soon</button>
-
-    <hr>
-
-    {% if request.user.is_authenticated %}
-
-        <h2>Welcome, {{ request.user.username }}</h2>
-
-        <p>
-            Account role: {{ request.user.get_role_display }}
-        </p>
-
-        <a href="{% url 'dashboard' %}">Open Dashboard</a>
-
-        <form method="POST" action="{% url 'logout' %}">
-            {% csrf_token %}
-            <button type="submit">Logout</button>
-        </form>
-
-    {% else %}
-
-        <h2>Account Access</h2>
-
-        <a href="{% url 'login' %}">Login</a>
-
-        |
-
-        <a href="{% url 'register' %}">Register as Farmer</a>
-
-    {% endif %}
-
-</body>
-</html>
+<section class="steps">
+  <div class="card"><h2>1. Photograph</h2><p>One leaf or fruit, in daylight, filling most of the frame.</p></div>
+  <div class="card"><h2>2. Diagnose</h2><p>The system identifies the crop and checks for disease.</p></div>
+  <div class="card"><h2>3. Act</h2><p>Read the recommended steps, or ask other farmers in the <a href="{% url 'forum' %}">forum</a>.</p></div>
+</section>
+{% endblock %}

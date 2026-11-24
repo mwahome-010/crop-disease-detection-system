@@ -4,7 +4,7 @@ from django import forms
 class ImageUploadForm(forms.Form):
     image = forms.ImageField(
         label="Select a crop image",
-        help_text="Upload a JPG, JPEG, PNG or other supported image."
+        widget=forms.FileInput(attrs={'accept': 'image/jpeg,image/png'}),
     )
 
     def clean_image(self):
