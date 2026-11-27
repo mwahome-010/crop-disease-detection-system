@@ -1,0 +1,137 @@
+[
+{
+  "model": "diagnosis.crop",
+  "pk": 1,
+  "fields": {
+    "name": "Tomato"
+  }
+},
+{
+  "model": "diagnosis.crop",
+  "pk": 2,
+  "fields": {
+    "name": "Avocado"
+  }
+},
+{
+  "model": "diagnosis.crop",
+  "pk": 3,
+  "fields": {
+    "name": "Beans"
+  }
+},
+{
+  "model": "diagnosis.crop",
+  "pk": 4,
+  "fields": {
+    "name": "Maize"
+  }
+},
+{
+  "model": "diagnosis.crop",
+  "pk": 5,
+  "fields": {
+    "name": "Kale(Sukuma Wiki)"
+  }
+},
+{
+  "model": "diagnosis.plantpart",
+  "pk": 1,
+  "fields": {
+    "name": "Leaf"
+  }
+},
+{
+  "model": "diagnosis.plantpart",
+  "pk": 2,
+  "fields": {
+    "name": "Fruit"
+  }
+},
+{
+  "model": "diagnosis.plantpart",
+  "pk": 3,
+  "fields": {
+    "name": "Seed"
+  }
+},
+{
+  "model": "diagnosis.disease",
+  "pk": 1,
+  "fields": {
+    "name": "Rust",
+    "description": "\"TBA\""
+  }
+},
+{
+  "model": "diagnosis.disease",
+  "pk": 2,
+  "fields": {
+    "name": "Early Blight",
+    "description": "Fungal leaf disease that causes brown spots with ring-like patterns, usually starting on older leaves."
+  }
+},
+{
+  "model": "diagnosis.disease",
+  "pk": 3,
+  "fields": {
+    "name": "Powdery Mildew",
+    "description": "\"TBA\""
+  }
+},
+{
+  "model": "diagnosis.disease",
+  "pk": 4,
+  "fields": {
+    "name": "Termite Bite",
+    "description": ""
+  }
+},
+{
+  "model": "diagnosis.croppartdisease",
+  "pk": 1,
+  "fields": {
+    "crop": 1,
+    "plant_part": 1,
+    "disease": 2
+  }
+},
+{
+  "model": "diagnosis.croppartdisease",
+  "pk": 2,
+  "fields": {
+    "crop": 3,
+    "plant_part": 3,
+    "disease": 4
+  }
+},
+{
+  "model": "diagnosis.recommendation",
+  "pk": 1,
+  "fields": {
+    "crop_part_disease": 1,
+    "advice": "Prune affected lower leaves, avoid overhead watering, mulch soil, and remove plant debris. Always follow label rates and pre-harvest intervals."
+  }
+},
+{
+  "model": "forum.flair",
+  "pk": 1,
+  "fields": {
+    "name": "Test"
+  }
+},
+{
+  "model": "forum.flair",
+  "pk": 3,
+  "fields": {
+    "name": "Disease"
+  }
+},
+{
+  "model": "forum.flair",
+  "pk": 4,
+  "fields": {
+    "name": "General Question"
+  }
+}
+]
